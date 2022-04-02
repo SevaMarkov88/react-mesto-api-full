@@ -10,6 +10,8 @@ const errorHandler = require('./middlewares/errorHandler');
 const { userValidation, loginValidation } = require('./middlewares/validationJoi');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
+require('dotenv').config();
+
 const { PORT = 3000 } = process.env;
 const app = express();
 
