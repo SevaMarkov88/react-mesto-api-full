@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const { errors } = require('celebrate');
@@ -9,8 +10,6 @@ const { login, createUser, signout } = require('./controllers/users');
 const errorHandler = require('./middlewares/errorHandler');
 const { userValidation, loginValidation } = require('./middlewares/validationJoi');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-
-require('dotenv').config();
 
 const { PORT = 3000 } = process.env;
 const app = express();
@@ -45,5 +44,5 @@ app.use(errorHandler);
 
 app.listen(PORT, () => {
   // eslint-disable-next-line no-console
-  console.log(`Ссылка на сервер: http://localhost:${PORT}`);
+  console.log(`listen port ${PORT}`);
 });
