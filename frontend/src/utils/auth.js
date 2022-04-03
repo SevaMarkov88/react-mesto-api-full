@@ -45,7 +45,7 @@ class Auth {
 }
 
 const auth = new Auth({
-  baseUrl: "http://mesto.markov.nomoredomains.work/",
+  baseUrl: "https://mesto.markov.nomoredomains.work/",
   headers: {
     "Content-Type": "application/json",
   },

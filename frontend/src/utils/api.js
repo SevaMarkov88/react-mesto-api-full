@@ -99,7 +99,7 @@ class Api {
 
 
 const api = new Api({
-  baseUrl: 'http://mesto.markov.nomoredomains.work/',
+  baseUrl: 'https://mesto.markov.nomoredomains.work/',
   headers: {
     'Content-Type': 'application/json'
   }
