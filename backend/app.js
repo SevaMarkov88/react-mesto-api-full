@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const router = require('./routes/index');
-const { login, createUser } = require('./controllers/users');
+const { login, createUser, signout } = require('./controllers/users');
 const errorHandler = require('./middlewares/errorHandler');
 const { userValidation, loginValidation } = require('./middlewares/validationJoi');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
@@ -36,6 +36,7 @@ app.get('/crash-test', () => {
 
 app.post('/signin', loginValidation, login);
 app.post('/signup', userValidation, createUser);
+app.get('/signout', signout);
 
 app.use(router);
 app.use(errorLogger);

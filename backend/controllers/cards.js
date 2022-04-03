@@ -26,25 +26,24 @@ module.exports.createCard = (req, res, next) => {
 module.exports.deleteCardById = (req, res, next) => {
   Cards.findById(req.params.cardId)
     .then((card) => {
-      if (card) {
-        if (card.owner.toString() === req.user._id.toString()) {
-          card.remove();
-          res.status(200).send(card);
-        } else {
-          next(new ForbiddenError('Карточку создал другой пользователь. Невозможно удалить.'));
-        }
-      } else {
-        next(new NotFoundError('Карточка не найдена'));
+      if (!card) {
+        throw NotFoundError('Карточка не найдена');
       }
+      if (!card.owner.toString() === req.user._id.toString()) {
+        throw ForbiddenError('Карточку создал другой пользователь. Невозможно удалить.');
+      }
+      return card.remove();
     })
+    .then((card) => {
+      res.status(200).send(card);
+  })
     .catch((err) => {
       if (err.name === 'CastError') {
         next(new BadRequestError('Переданы некорректные данные.'));
       } else {
         next(err);
       }
-    });
-};
+});
 
 module.exports.addLike = (req, res, next) => {
   Cards.findByIdAndUpdate(
