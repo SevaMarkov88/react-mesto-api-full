@@ -47,7 +47,6 @@ class Auth {
 const auth = new Auth({
   baseUrl: "https://mesto.markov.nomoredomains.work/",
   headers: {
-    Authorization: `Bearer ${localStorage.getItem('jwt')}`,
     "Content-Type": "application/json",
   },
 });
