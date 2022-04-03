@@ -147,7 +147,6 @@ function App() {
       .authorize(password, userName)
       .then((data) => {
         console.log(data);
-        localStorage.setItem("token", data.cookies.jwt);
         localStorage.setItem("email", userName);
         handleLoginSuccess(userName);
         history.push("/");
