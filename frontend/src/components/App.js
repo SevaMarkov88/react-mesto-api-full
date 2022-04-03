@@ -36,15 +36,6 @@ function App() {
   const [loggedIn, setLoggedIn] = React.useState(false);
   const history = useHistory();
 
-  React.useEffect(() => {
-    Promise.all([api.getUserInfo(), api.getInitialCards()])
-      .then(([user, cards]) => {
-        setCurrentUser(user);
-        setCards(cards);
-      })
-      .catch((err) => console.log(err));
-  }, []);
-
   function handleCardLike(card) {
     const isLiked = card.likes.some((i) => i._id === currentUser._id);
 
@@ -150,6 +141,12 @@ function App() {
         localStorage.setItem("token", data.token);
         localStorage.setItem("email", userName);
         handleLoginSuccess(userName);
+        Promise.all([api.getUserInfo(), api.getInitialCards()])
+        .then(([user, cards]) => {
+          setCurrentUser(user);
+          setCards(cards);
+        })
+        .catch((err) => console.log(err));
         history.push("/");
       })
       .catch((err) => {
@@ -219,9 +216,9 @@ function App() {
       />
       <Switch>
         <Route path="/sign-up">
-          <Register 
-            history={history} 
-            handleRegisterSubmit={handleRegisterSubmit} 
+          <Register
+            history={history}
+            handleRegisterSubmit={handleRegisterSubmit}
           />
         </Route>
         <Route path="/sign-in">
