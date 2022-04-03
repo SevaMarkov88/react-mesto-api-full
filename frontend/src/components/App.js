@@ -161,6 +161,8 @@ function App() {
   function handleLoginSuccess(email) {
     setLoggedIn(true);
     setAuthUserEmain(email);
+    api.getUserInfo()
+    .then((user) => setCurrentUser(user))
   }
 
   function handleLoginNotSuccess() {
