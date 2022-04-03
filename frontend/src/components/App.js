@@ -114,7 +114,7 @@ function App() {
     api
       .addNewCard(card.name, card.link)
       .then((card) => {
-        setCards([card, ...cards]);
+        setCards([...cards, card]);
         closeAllPopups();
       })
       .catch((err) => console.log(err));
@@ -147,7 +147,7 @@ function App() {
       .authorize(password, userName)
       .then((data) => {
         console.log(data);
-        localStorage.setItem("token", data.token);
+        localStorage.setItem("token", cookie.token);
         localStorage.setItem("email", userName);
         handleLoginSuccess(userName);
         history.push("/");
