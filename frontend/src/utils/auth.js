@@ -38,6 +38,7 @@ class Auth {
   checkToken(token) {
     return fetch(`${this._url}/users/me`, {
       method: "GET",
+      mode: 'cors',
       credentials: 'include',
       headers: {
         ...this._headers,

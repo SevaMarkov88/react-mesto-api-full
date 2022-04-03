@@ -14,6 +14,7 @@ class Api {
   getUserInfo() {
     return fetch(`${this.url}/users/me`, {
       method: 'GET',
+      mode: 'cors',
       credentials: 'include',
       headers: this.headers
     })
@@ -24,6 +25,7 @@ class Api {
   getInitialCards() {
     return fetch(`${this.url}/cards`, {
       method: 'GET',
+      mode: 'cors',
       credentials: 'include',
       headers: this.headers
     })
