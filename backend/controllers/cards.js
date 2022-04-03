@@ -36,14 +36,15 @@ module.exports.deleteCardById = (req, res, next) => {
     })
     .then((card) => {
       res.status(200).send(card);
-  })
+    })
     .catch((err) => {
       if (err.name === 'CastError') {
         next(new BadRequestError('Переданы некорректные данные.'));
       } else {
         next(err);
       }
-});
+    });
+};
 
 module.exports.addLike = (req, res, next) => {
   Cards.findByIdAndUpdate(
