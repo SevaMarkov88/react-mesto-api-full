@@ -203,7 +203,7 @@ function App() {
       auth
         .checkToken(token)
         .then((data) => {
-          handleLoginSuccess(data.data.email);
+          handleLoginSuccess(data.email);
           console.log(loggedIn, data);
           history.push("/");
         })
