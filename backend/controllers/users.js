@@ -94,7 +94,7 @@ module.exports.updateUserInfo = (req, res, next) => {
   )
     .then((user) => {
       if (user) {
-        res.status(200).send({ data: user });
+        res.status(200).send(user);
       } else {
         next(new BadRequestError('Переданы некорректные данные.'));
       }
@@ -122,7 +122,7 @@ module.exports.updateAvatar = (req, res, next) => {
     .then((user) => {
       if (user) {
         res.status(200)
-          .send({ data: user });
+          .send(user);
       } else {
         next(new BadRequestError('Переданы некорректные данные.'));
       }
