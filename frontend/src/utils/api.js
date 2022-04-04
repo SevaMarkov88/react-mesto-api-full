@@ -63,7 +63,7 @@ class Api {
   }
 
   addLike(id) {
-    return fetch(`${this.url}/cards/likes/${id}`, {
+    return fetch(`${this.url}/cards/${id}/likes`, {
       method: 'PUT',
       credentials: 'include',
       headers: this.headers
