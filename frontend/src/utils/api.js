@@ -54,7 +54,7 @@ class Api {
   }
 
   removeLike(id) {
-    return fetch(`${this.url}/cards/likes/${id}`, {
+    return fetch(`${this.url}/cards/${id}/likes`, {
       method: 'DELETE',
       credentials: 'include',
       headers: this.headers
